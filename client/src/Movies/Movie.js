@@ -5,8 +5,9 @@ import {Link} from 'react-router-dom';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
-  const { id } = useParams();
-  console.log(id); 
+  const { movieID } = useParams();
+  console.log(useParams());
+  //console.log(id); 
   useEffect(() => {
   
 
@@ -14,7 +15,7 @@ const Movie = (props) => {
     // You will NEED to add a dependency array to this effect hook
 
        axios
-        .get(`http://localhost:5000/api/movies/${id}`)
+        .get(`http://localhost:5000/api/movies/${movieID}`)
         .then(response => {
           setMovie(response.data);
         })
@@ -22,7 +23,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[id]);
+  },[movieID]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
